@@ -265,7 +265,7 @@ The API will return three error types when requests fail:
   "success": true,
   "total_questions": 3
 }
-  ```
+  
 ### POST /quizzes
 - General:
     - fetches one random question within a specified category. Previously asked questions are not asked again
@@ -283,7 +283,7 @@ The API will return three error types when requests fail:
   },
   "success": true
 }
-  ```
+  
 
 ### POST /create
 - General:
