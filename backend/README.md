@@ -123,11 +123,11 @@ The API will return three error types when requests fail:
 - 404: Resource Not Found
 - 422: Not Processable
 
-## Endpoints
-## GET /questions
+### Endpoints
+### GET /questions
 - General:
--- Request parameters (optional): page:int
--- Returns a list of questions and categories
--- Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
+- Request parameters (optional): page:int
+- Returns a list of questions and categories
+- Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
 - Sample: curl http://127.0.0.1:5000/questions
 
