@@ -345,3 +345,10 @@ The API will return three error types when requests fail:
   "total_questions": 15
 }
 ```
+## Deployment N/A
+
+## Authors
+Ayegbusi Oseyemi Precious
+
+## Acknowledgements
+My tutors and mentors at Udacity
