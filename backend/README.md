@@ -235,7 +235,7 @@ Returns: An object with a single key, categories, that contains an object of id:
   "6": "Sports"
 }
 ```
-#### GET /categories/{category_id}/questions
+## GET /categories/{category_id}/questions
 - General
   - requests argument: category_id:int
   - gets all questions in the specified category and returns the questions in the specified category, success value, total number of questions in the specified category.
