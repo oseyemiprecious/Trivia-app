@@ -126,9 +126,9 @@ The API will return three error types when requests fail:
 ### Endpoints
 ### GET /questions
 - General:
-- Request parameters (optional): page:int
-- Returns a list of questions and categories
-- Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
+      - Request parameters (optional): page:int
+      - Returns a list of questions and categories
+      - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
 - Sample: curl http://127.0.0.1:5000/questions
 
 ```
@@ -266,11 +266,12 @@ The API will return three error types when requests fail:
   "total_questions": 3
 }
   ```
-#### POST /quizzes
+### POST /quizzes
 - General:
     - fetches one random question within a specified category. Previously asked questions are not asked again
     - request body: (previous_questions: arr, quiz_category: {id:int, type:string})
     `curl -X POST http://127.0.0.1:5000/quizzes-H "Content-Type: application/json" -d '{"previous_questions":"arr","quiz_category": {"id":"1", "type":"string"}}`
+  
   ```
   {
   "question": {
@@ -283,7 +284,8 @@ The API will return three error types when requests fail:
   "success": true
 }
   ```
-#### POST /create
+
+### POST /create
 - General:
     - request body: (question, answer, category, diificulty.)
     - Creates a new questions using the submitted title, author and rating. Returns the id of the created questions, success value, total questions, and questions list based on current page number to update the frontend.
