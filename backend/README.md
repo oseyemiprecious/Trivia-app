@@ -111,13 +111,6 @@ Error Handling
 Errors are returned as JSON objects in the following format:
 
 {
-     "success": False,
-     "error": 400,
-     "message": "bad request"
-     
-}
-
-{
     "success": False,
     "error": 400,
     "message": "bad request"
