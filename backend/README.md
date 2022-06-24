@@ -199,7 +199,7 @@ Sample:  curl http://127.0.0.1:5000/questions
       "category": 3,
       "difficulty": 2,
       "id": 13,
-      "question": "What is the largest lake in Africa?"
+      "question": "What is the largest lake in Africa?",
     },
     {
       "answer": "The Palace of Versailles",
