@@ -107,10 +107,10 @@ python test_flaskr.py
 
 ## Getting Started
 
-Base URL: At present, this app can only be run locally and is not hosted as a base URL. The backend app is hosted at the default http://127.0.0.1:5000/, which is set as proxy in the frontend configuration.
-
+Getting Started
+Base URL: At present this app can only be run locally and is not hosted as a base URL. The backend app is hosted at the default, http://127.0.0.1:5000/, which is set as a proxy in the frontend configuration.
+Authentication: This version of the application does not require authentication or API keys.
 Error Handling
-
 Errors are returned as JSON objects in the following format:
 
 {
@@ -118,23 +118,18 @@ Errors are returned as JSON objects in the following format:
     "error": 400,
     "message": "bad request"
 }
-
 The API will return three error types when requests fail:
 
 400: Bad Request
 404: Resource Not Found
 422: Not Processable
-
-## Endpoints
-
-## GET /questions
-
+Endpoints
+GET /questions
 General:
+Request parameters (optional): page:int
 Returns a list of questions and categories
-Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1
-
-Sample:  curl http://127.0.0.1:5000/questions
-
+Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
+Sample: curl http://127.0.0.1:5000/questions
   "categories": {
    "1": "Science",
    "2": "Art",
@@ -199,7 +194,7 @@ Sample:  curl http://127.0.0.1:5000/questions
       "category": 3,
       "difficulty": 2,
       "id": 13,
-      "question": "What is the largest lake in Africa?",
+      "question": "What is the largest lake in Africa?"
     },
     {
       "answer": "The Palace of Versailles",
@@ -217,15 +212,12 @@ Sample:  curl http://127.0.0.1:5000/questions
     }
   ],
   "success": true,
-  "total_questions": 18,
+  "total_questions": 18
 }
-
-## GET /categories
-
+GET /categories
 Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
 Request Arguments: None
 Returns: An object with a single key, categories, that contains an object of id: category_string key: value pairs.
-
 {
   "1": "Science",
   "2": "Art",
@@ -235,7 +227,7 @@ Returns: An object with a single key, categories, that contains an object of id:
   "6": "Sports"
 }
 ```
-## GET /categories/{category_id}/questions
+#### GET /categories/{category_id}/questions
 - General
   - requests argument: category_id:int
   - gets all questions in the specified category and returns the questions in the specified category, success value, total number of questions in the specified category.
@@ -269,7 +261,7 @@ Returns: An object with a single key, categories, that contains an object of id:
   "total_questions": 3
 }
   ```
-## POST /quizzes
+#### POST /quizzes
 - General:
     - fetches one random question within a specified category. Previously asked questions are not asked again
     - request body: (previous_questions: arr, quiz_category: {id:int, type:string})
@@ -286,7 +278,7 @@ Returns: An object with a single key, categories, that contains an object of id:
   "success": true
 }
   ```
-## POST /create
+#### POST /create
 - General:
     - request body: (question, answer, category, diificulty.)
     - Creates a new questions using the submitted title, author and rating. Returns the id of the created questions, success value, total questions, and questions list based on current page number to update the frontend.
@@ -306,10 +298,34 @@ Returns: An object with a single key, categories, that contains an object of id:
   "success": true,
   "total_questions": 17
 }
+POST /search
+-General:
 
-## POST /search
-General:
 Request body: searchTerm -Searches through the questions in the database for the given keywords. returns a list of all available questions which has the keyword, success value, and total number of questions gotten from the search. -curl -X POST http://127.0.0.1:5000/search -H "Content-Type: application/json" -d '{"searchTerm":"Kilimanjaro"}
- 
+{
+  "questions": [
+    {
+    "answer": "Africa",
+    "category": 3,
+    "difficulty": 3,
+    "id": 19,
+    "question": "Where is mountain Kilimanjaro located?"
+  }
+  ],
 
+"success": true,
+"total_questions": 1
+}
+DELETE /question/{question_id}
+General:
+request arguments: question_id:int
+Deletes the questions of the given ID if it exists. Returns the id of the deleted questions, success value, total questions, and questions list based on current page number to update the frontend.
+curl -X DELETE http://127.0.0.1:5000/questions/5?page=1
+{
+  "questions": [
 
+  ],
+  "deleted": 5,
+  "success": true,
+  "total_questions": 15
+}
