@@ -220,4 +220,96 @@ Sample:  curl http://127.0.0.1:5000/questions
   "total_questions": 18,
 }
 
+## GET /categories
+
+Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
+Request Arguments: None
+Returns: An object with a single key, categories, that contains an object of id: category_string key: value pairs.
+
+{
+  "1": "Science",
+  "2": "Art",
+  "3": "Geography",
+  "4": "History",
+  "5": "Entertainment",
+  "6": "Sports"
+}
+```
+#### GET /categories/{category_id}/questions
+- General
+  - requests argument: category_id:int
+  - gets all questions in the specified category and returns the questions in the specified category, success value, total number of questions in the specified category.
+  - `curl http://127.0.0.1:5000/categories/3/questions `
+  ```
+  {
+  "questions": [
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 13,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "The Palace of Versailles",
+      "category": 3,
+      "difficulty": 3,
+      "id": 14,
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    },
+    {
+      "answer": "Agra",
+      "category": 3,
+      "difficulty": 2,
+      "id": 15,
+      "question": "The Taj Mahal is located in which Indian city?"
+    }
+  ],
+  "success": true,
+  "total_questions": 3
+}
+  ```
+## POST /quizzes
+- General:
+    - fetches one random question within a specified category. Previously asked questions are not asked again
+    - request body: (previous_questions: arr, quiz_category: {id:int, type:string})
+    `curl -X POST http://127.0.0.1:5000/quizzes-H "Content-Type: application/json" -d '{"previous_questions":"arr","quiz_category": {"id":"1", "type":"string"}}`
+  ```
+  {
+  "question": {
+    "answer": "The Liver",
+    "category": 1,
+    "difficulty": 4,
+    "id": 20,
+    "question": "What is the heaviest organ in the human body?"
+  },
+  "success": true
+}
+  ```
+## POST /create
+- General:
+    - request body: (question, answer, category, diificulty.)
+    - Creates a new questions using the submitted title, author and rating. Returns the id of the created questions, success value, total questions, and questions list based on current page number to update the frontend.
+- `curl -X POST http://127.0.0.1:5000/create  -H "Content-Type: application/json" -d '{"question":"Where is mountain Kilimanjaro located?", "answer":"Africa","category": "3", "difficulty":"2"}`
+
+```{
+  "questions": [
+    {
+      "answer": "Africa",
+      "category": 3,
+      "difficulty": 3,
+      "id": 19,
+      "question": "Where is mountain Kilimanjaro located?"
+    }
+  ],
+  "created": 24,
+  "success": true,
+  "total_questions": 17
+}
+
+## POST /search
+General:
+Request body: searchTerm -Searches through the questions in the database for the given keywords. returns a list of all available questions which has the keyword, success value, and total number of questions gotten from the search. -curl -X POST http://127.0.0.1:5000/search -H "Content-Type: application/json" -d '{"searchTerm":"Kilimanjaro"}
+ 
+
 
