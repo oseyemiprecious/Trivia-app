@@ -307,7 +307,24 @@ The API will return three error types when requests fail:
 }
 ```
 
-POST /search
+### POST /search
 -General:
 
 - Request body: searchTerm -Searches through the questions in the database for the given keywords. returns a list of all available questions which has the keyword, success value, and total number of questions gotten from the search. -curl -X POST http://127.0.0.1:5000/search -H "Content-Type: application/json" -d '{"searchTerm":"Kilimanjaro"}
+
+```
+{
+  "questions": [
+    {
+    "answer": "Africa",
+    "category": 3,
+    "difficulty": 3,
+    "id": 19,
+    "question": "Where is mountain Kilimanjaro located?"
+  }
+  ],
+
+"success": true,
+"total_questions": 1
+}
+```
