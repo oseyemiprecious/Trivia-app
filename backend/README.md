@@ -126,9 +126,9 @@ The API will return three error types when requests fail:
 ### Endpoints
 ### GET /questions
 - General:
-      - Request parameters (optional): page:int
-      - Returns a list of questions and categories
-      - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
+  - Request parameters (optional): page:int
+  - Returns a list of questions and categories
+  - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
 - Sample: curl http://127.0.0.1:5000/questions
 
 ```
@@ -306,3 +306,8 @@ The API will return three error types when requests fail:
   "total_questions": 17
 }
 ```
+
+POST /search
+-General:
+
+- Request body: searchTerm -Searches through the questions in the database for the given keywords. returns a list of all available questions which has the keyword, success value, and total number of questions gotten from the search. -curl -X POST http://127.0.0.1:5000/search -H "Content-Type: application/json" -d '{"searchTerm":"Kilimanjaro"}
