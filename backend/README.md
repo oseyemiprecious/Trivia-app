@@ -217,7 +217,7 @@ Sample:  curl http://127.0.0.1:5000/questions
     }
   ],
   "success": true,
-  "total_questions": 18
+  "total_questions": 18,
 }
 
 
