@@ -112,14 +112,13 @@ Base URL: At present this app can only be run locally and is not hosted as a bas
 Authentication: This version of the application does not require authentication or API keys.
 Error Handling
 Errors are returned as JSON objects in the following format:
-
 {
     "success": False,
     "error": 400,
     "message": "bad request"
 }
+ 
 The API will return three error types when requests fail:
-
 400: Bad Request
 404: Resource Not Found
 422: Not Processable
@@ -130,7 +129,7 @@ Request parameters (optional): page:int
 Returns a list of questions and categories
 Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1.
 Sample: curl http://127.0.0.1:5000/questions
-  "categories": {
+ "categories": {
    "1": "Science",
    "2": "Art",
    "3": "Geography",
@@ -214,6 +213,7 @@ Sample: curl http://127.0.0.1:5000/questions
   "success": true,
   "total_questions": 18
 }
+ 
 GET /categories
 Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
 Request Arguments: None
@@ -300,7 +300,6 @@ Returns: An object with a single key, categories, that contains an object of id:
 }
 POST /search
 -General:
-
 Request body: searchTerm -Searches through the questions in the database for the given keywords. returns a list of all available questions which has the keyword, success value, and total number of questions gotten from the search. -curl -X POST http://127.0.0.1:5000/search -H "Content-Type: application/json" -d '{"searchTerm":"Kilimanjaro"}
 {
   "questions": [
@@ -316,6 +315,7 @@ Request body: searchTerm -Searches through the questions in the database for the
 "success": true,
 "total_questions": 1
 }
+ 
 DELETE /question/{question_id}
 General:
 request arguments: question_id:int
@@ -329,3 +329,5 @@ curl -X DELETE http://127.0.0.1:5000/questions/5?page=1
   "success": true,
   "total_questions": 15
 }
+
+
