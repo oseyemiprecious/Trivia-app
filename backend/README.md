@@ -328,3 +328,20 @@ The API will return three error types when requests fail:
 "total_questions": 1
 }
 ```
+
+### DELETE /question/{question_id}
+- General:
+  - request arguments: question_id:int
+  - Deletes the questions of the given ID if it exists. Returns the id of the deleted questions, success value, total questions, and questions list based on current page number to update the frontend.
+- curl -X DELETE http://127.0.0.1:5000/questions/5?page=1
+
+```
+{
+  "questions": [
+
+  ],
+  "deleted": 5,
+  "success": true,
+  "total_questions": 15
+}
+```
